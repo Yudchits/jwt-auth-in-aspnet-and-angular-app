@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JwtAuthentication.DataAccess.Configurations;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace JwtAuthentication.DataAccess.Context
 {
@@ -11,6 +13,9 @@ namespace JwtAuthentication.DataAccess.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
         }
     }
 }

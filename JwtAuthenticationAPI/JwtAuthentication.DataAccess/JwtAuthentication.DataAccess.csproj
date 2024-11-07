@@ -12,4 +12,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JwtAuthentication.DataAccess.Common\JwtAuthentication.DataAccess.Common.csproj" />
+  </ItemGroup>
+
 </Project>
