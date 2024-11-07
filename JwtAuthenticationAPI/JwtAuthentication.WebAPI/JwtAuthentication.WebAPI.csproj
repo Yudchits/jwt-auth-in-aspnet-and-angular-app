@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JwtAuthentication.DataAccess\JwtAuthentication.DataAccess.csproj" />
+    <ProjectReference Include="..\JwtAuthentication.Logic.Common\JwtAuthentication.Logic.Common.csproj" />
   </ItemGroup>
 
 </Project>

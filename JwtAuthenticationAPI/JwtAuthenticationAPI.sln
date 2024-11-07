@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAuthentication.DataAcces
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAuthentication.DataAccess", "JwtAuthentication.DataAccess\JwtAuthentication.DataAccess.csproj", "{40601386-5AAA-47CC-A1B5-C81B57FAD579}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAuthentication.Logic.Common", "JwtAuthentication.Logic.Common\JwtAuthentication.Logic.Common.csproj", "{7674A5B1-090B-462C-B77A-0CFA324063F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAuthentication.Logic", "JwtAuthentication.Logic\JwtAuthentication.Logic.csproj", "{587E463F-24A2-4924-9E37-30C65D68239E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{40601386-5AAA-47CC-A1B5-C81B57FAD579}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40601386-5AAA-47CC-A1B5-C81B57FAD579}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40601386-5AAA-47CC-A1B5-C81B57FAD579}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7674A5B1-090B-462C-B77A-0CFA324063F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7674A5B1-090B-462C-B77A-0CFA324063F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7674A5B1-090B-462C-B77A-0CFA324063F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7674A5B1-090B-462C-B77A-0CFA324063F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{587E463F-24A2-4924-9E37-30C65D68239E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{587E463F-24A2-4924-9E37-30C65D68239E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{587E463F-24A2-4924-9E37-30C65D68239E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{587E463F-24A2-4924-9E37-30C65D68239E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

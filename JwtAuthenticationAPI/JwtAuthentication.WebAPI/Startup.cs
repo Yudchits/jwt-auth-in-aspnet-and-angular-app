@@ -1,4 +1,5 @@
 using JwtAuthentication.DataAccess.Context;
+using JwtAuthentication.Logic.Common.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,16 @@ namespace JwtAuthentication.WebAPI
             services.AddDbContext<JwtAuthenticationContext>(options =>
             {
                 options.UseSqlServer(Configuration["DB_CONNECTION"]);
+            });
+
+            services.Configure<AuthOptions>(options =>
+            {
+                options.Issuer = Configuration["ISSUER"];
+                options.Audience = Configuration["AUDIENCE"];
+                options.Secret = Configuration["SECRET"];
+
+                var isInt = int.TryParse(Configuration["TOKEN_EXPIRES_SECONDS"], out int tokenLiftTime);
+                options.TokenLifeTime = isInt ? tokenLiftTime : 1;
             });
 
             services.AddControllers();
