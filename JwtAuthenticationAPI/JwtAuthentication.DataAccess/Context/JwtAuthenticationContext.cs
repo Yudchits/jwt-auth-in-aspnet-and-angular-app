@@ -1,11 +1,15 @@
-﻿using JwtAuthentication.DataAccess.Configurations;
+﻿using JwtAuthentication.DataAccess.Common.Models;
+using JwtAuthentication.DataAccess.Configurations;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
 
 namespace JwtAuthentication.DataAccess.Context
 {
     public class JwtAuthenticationContext : DbContext
     {
+        public DbSet<UserDb> Users { get; set; }
+        public DbSet<RoleDb> Roles { get; set; }
+        public DbSet<UserRoleDb> UserRoles { get; set; }
+
         public JwtAuthenticationContext(DbContextOptions<JwtAuthenticationContext> options) : base(options)
         {
         }
