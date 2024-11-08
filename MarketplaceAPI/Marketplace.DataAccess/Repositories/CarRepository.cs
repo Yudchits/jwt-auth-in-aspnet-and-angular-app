@@ -20,8 +20,8 @@ namespace Marketplace.DataAccess.Repositories
         public async Task<Result<CarDb>> AddAsync(CarDb car)
         {
             _context.Cars.Add(car);
-            var isCreated = await SaveChangesAsync();
-            if (isCreated)
+            var isAdded = await SaveChangesAsync();
+            if (isAdded)
             {
                 return Result<CarDb>.Ok(car);
             }

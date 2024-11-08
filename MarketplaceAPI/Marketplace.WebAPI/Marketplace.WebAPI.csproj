@@ -25,6 +25,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Marketplace.DataAccess\Marketplace.DataAccess.csproj" />
+    <ProjectReference Include="..\Marketplace.Logic.Common\Marketplace.Logic.Common.csproj" />
+    <ProjectReference Include="..\Marketplace.Logic\Marketplace.Logic.csproj" />
   </ItemGroup>
 
 </Project>

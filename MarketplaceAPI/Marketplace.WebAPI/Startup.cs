@@ -1,4 +1,8 @@
+using Marketplace.DataAccess.Common.Repositories;
 using Marketplace.DataAccess.Context;
+using Marketplace.DataAccess.Repositories;
+using Marketplace.Logic.Common.Services;
+using Marketplace.Logic.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +31,9 @@ namespace Marketplace.WebAPI
             {
                 options.UseSqlServer(Configuration["DB_CONNECTION"]);
             });
+
+            services.AddScoped<ICarService, CarService>();
+            services.AddScoped<ICarRepository, CarRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
