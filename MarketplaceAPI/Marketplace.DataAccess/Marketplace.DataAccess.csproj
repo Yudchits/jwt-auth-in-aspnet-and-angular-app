@@ -12,4 +12,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Marketplace.DataAccess.Common\Marketplace.DataAccess.Common.csproj" />
+  </ItemGroup>
+
 </Project>
