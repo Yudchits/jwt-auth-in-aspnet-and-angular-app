@@ -36,6 +36,13 @@ namespace JwtAuthentication.Logic.Services
 
         public async Task<Result<UserBLL>> CreateAsync(UserBLL user)
         {
+            var userByEmail = await _repository.GetByEmailAsync(user.Email);
+
+            if (userByEmail != null)
+            {
+                return Result<UserBLL>.Fail("The email is already used");
+            }
+
             var isUserValid = UserValidator.IsUserValid(user, out string errorMessage);
 
             if (!isUserValid)

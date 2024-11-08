@@ -6,6 +6,6 @@ namespace JwtAuthentication.Logic.Common.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<UserRolesBLL> UserRoles { get; set; }
+        public ICollection<UserRoleBLL> UserRoles { get; set; }
     }
 }

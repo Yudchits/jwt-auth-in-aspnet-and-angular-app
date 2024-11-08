@@ -46,6 +46,7 @@ namespace JwtAuthentication.WebAPI
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ITokenService, TokenService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
