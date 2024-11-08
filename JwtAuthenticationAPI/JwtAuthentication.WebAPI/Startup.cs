@@ -1,5 +1,9 @@
+using JwtAuthentication.DataAccess.Common.Repositories;
 using JwtAuthentication.DataAccess.Context;
+using JwtAuthentication.DataAccess.Repositories;
 using JwtAuthentication.Logic.Common.Helpers;
+using JwtAuthentication.Logic.Common.Services;
+using JwtAuthentication.Logic.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace JwtAuthentication.WebAPI
 {
@@ -36,6 +41,11 @@ namespace JwtAuthentication.WebAPI
                 var isInt = int.TryParse(Configuration["TOKEN_EXPIRES_SECONDS"], out int tokenLiftTime);
                 options.TokenLifeTime = isInt ? tokenLiftTime : 1;
             });
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

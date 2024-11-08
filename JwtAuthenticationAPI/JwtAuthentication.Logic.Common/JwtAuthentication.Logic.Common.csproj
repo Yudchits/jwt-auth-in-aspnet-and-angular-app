@@ -8,4 +8,8 @@
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JwtAuthentication.DataAccess.Common\JwtAuthentication.DataAccess.Common.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -22,6 +22,11 @@ namespace JwtAuthentication.DataAccess.Repositories
             return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
         }
 
+        public async Task<UserDb> GetByEmailAsync(string email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
+
         public async Task<Result<UserDb>> CreateAsync(UserDb user)
         {
             using (var transaction = await _context.Database.BeginTransactionAsync())
