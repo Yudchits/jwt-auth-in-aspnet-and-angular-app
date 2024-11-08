@@ -47,7 +47,6 @@ namespace Marketplace.DataAccess.Configurations
                 .IsRequired();
 
             builder.Property(c => c.Photo)
-                .HasMaxLength(256)
                 .IsRequired();
         }
     }
