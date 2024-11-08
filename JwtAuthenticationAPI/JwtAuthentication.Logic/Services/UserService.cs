@@ -28,13 +28,7 @@ namespace JwtAuthentication.Logic.Services
                 .ContinueWith(result => _mapper.Map<UserBLL>(result.Result));
         }
 
-        public async Task<UserBLL> GetByEmailAsync(string email)
-        {
-            return await _repository.GetByEmailAsync(email)
-                .ContinueWith(result => _mapper.Map<UserBLL>(result.Result));
-        }
-
-        public async Task<Result<UserBLL>> CreateAsync(UserBLL user)
+        public async Task<Result<UserBLL>> RegisterAsync(UserBLL user)
         {
             var userByEmail = await _repository.GetByEmailAsync(user.Email);
 
@@ -55,7 +49,7 @@ namespace JwtAuthentication.Logic.Services
 
             var userDb = _mapper.Map<UserDb>(user);
 
-            var createResult = await _repository.CreateAsync(userDb);
+            var createResult = await _repository.RegisterAsync(userDb);
             
             if (!createResult.Success)
             {
@@ -68,15 +62,26 @@ namespace JwtAuthentication.Logic.Services
             }
         }
 
-        public Task<Result<UserBLL>> UpdateAsync(UserBLL user)
+        public async Task<Result<UserBLL>> LoginAsync(UserBLL user)
         {
-            throw new NotImplementedException();
-        }
+            var userByEmail = await _repository.GetByEmailAsync(user.Email);
 
-        public Task<Result<UserBLL>> DeleteAsync(UserBLL user)
-        {
-            throw new NotImplementedException();
-        }
+            if (userByEmail == null)
+            {
+                return Result<UserBLL>.Fail("There is no user with such email");
+            }
 
+            var isPasswordCorrect = Argon2.Verify(userByEmail.Password, user.Password);
+
+            if (!isPasswordCorrect)
+            {
+                return Result<UserBLL>.Fail("Incorrect password");
+            }
+            else
+            {
+                var userByEmailBLL = _mapper.Map<UserBLL>(userByEmail);
+                return Result<UserBLL>.Ok(userByEmailBLL);
+            }
+        }
     }
 }

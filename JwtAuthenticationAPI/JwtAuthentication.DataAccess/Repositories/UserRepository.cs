@@ -27,7 +27,7 @@ namespace JwtAuthentication.DataAccess.Repositories
             return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        public async Task<Result<UserDb>> CreateAsync(UserDb user)
+        public async Task<Result<UserDb>> RegisterAsync(UserDb user)
         {
             using (var transaction = await _context.Database.BeginTransactionAsync())
             {
@@ -78,16 +78,6 @@ namespace JwtAuthentication.DataAccess.Repositories
                     return Result<UserDb>.Fail(exception.Message);
                 }
             }
-        }
-
-        public Task<Result<UserDb>> UpdateAsync(UserDb user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Result<UserDb>> DeleteAsync(UserDb user)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<bool> SaveChangesAsync()

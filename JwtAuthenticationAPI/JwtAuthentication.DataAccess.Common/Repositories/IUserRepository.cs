@@ -9,9 +9,7 @@ namespace JwtAuthentication.DataAccess.Common.Repositories
     {
         Task<UserDb> GetByIdAsync(Guid id);
         Task<UserDb> GetByEmailAsync(string email);
-        Task<Result<UserDb>> CreateAsync(UserDb user);
-        Task<Result<UserDb>> UpdateAsync(UserDb user);
-        Task<Result<UserDb>> DeleteAsync(UserDb user);
+        Task<Result<UserDb>> RegisterAsync(UserDb user);
         Task<bool> SaveChangesAsync();
     }
 }

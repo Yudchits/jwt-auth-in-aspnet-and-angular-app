@@ -8,9 +8,7 @@ namespace JwtAuthentication.Logic.Common.Services
     public interface IUserService
     {
         Task<UserBLL> GetByIdAsync(Guid id);
-        Task<UserBLL> GetByEmailAsync(string email);
-        Task<Result<UserBLL>> CreateAsync(UserBLL user);
-        Task<Result<UserBLL>> UpdateAsync(UserBLL user);
-        Task<Result<UserBLL>> DeleteAsync(UserBLL user);
+        Task<Result<UserBLL>> RegisterAsync(UserBLL user);
+        Task<Result<UserBLL>> LoginAsync(UserBLL user);
     }
 }

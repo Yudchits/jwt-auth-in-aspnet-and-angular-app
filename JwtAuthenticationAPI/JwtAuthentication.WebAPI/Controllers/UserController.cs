@@ -29,15 +29,38 @@ namespace JwtAuthentication.WebAPI.Controllers
                 Password = registerUser.Password
             };
 
-            var createResult = await _userService.CreateAsync(user);
+            var registerResult = await _userService.RegisterAsync(user);
             
-            if (!createResult.Success)
+            if (!registerResult.Success)
             {
-                return StatusCode(400, new { Message = createResult.Message });
+                return StatusCode(400, new { Message = registerResult.Message });
             }
             else
             {
-                var token = _tokenService.GenerateToken(createResult.Data);
+                var token = _tokenService.GenerateToken(registerResult.Data);
+                return StatusCode(200, new { Data = token });
+            }
+        }
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<IActionResult> LoginAsync([FromBody] UserLoginPL loginUser)
+        {
+            var user = new UserBLL
+            {
+                Email = loginUser.Email,
+                Password = loginUser.Password
+            };
+
+            var loginResult = await _userService.LoginAsync(user);
+
+            if (!loginResult.Success)
+            {
+                return StatusCode(409, new { Message = loginResult.Message });
+            }
+            else
+            {
+                var token = _tokenService.GenerateToken(loginResult.Data);
                 return StatusCode(200, new { Data = token });
             }
         }
