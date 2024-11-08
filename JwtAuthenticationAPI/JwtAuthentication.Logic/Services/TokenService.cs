@@ -32,7 +32,7 @@ namespace JwtAuthentication.Logic.Services
 
             foreach (var role in user.UserRoles)
             {
-                claims.Add(new Claim(ClaimTypes.Role, role.Role.Name));
+                claims.Add(new Claim("role", role.Role.Name));
             }
 
             var token = new JwtSecurityToken

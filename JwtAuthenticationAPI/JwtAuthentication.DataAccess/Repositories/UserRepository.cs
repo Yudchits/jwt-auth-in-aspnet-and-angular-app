@@ -19,12 +19,18 @@ namespace JwtAuthentication.DataAccess.Repositories
 
         public async Task<UserDb> GetByIdAsync(Guid id)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            return await _context.Users
+                .Include(u => u.UserRoles)
+                .ThenInclude(ur => ur.Role)
+                .FirstOrDefaultAsync(u => u.Id == id);
         }
 
         public async Task<UserDb> GetByEmailAsync(string email)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            return await _context.Users
+                .Include(u => u.UserRoles)
+                .ThenInclude(ur => ur.Role)
+                .FirstOrDefaultAsync(u => u.Email == email);
         }
 
         public async Task<Result<UserDb>> RegisterAsync(UserDb user)
