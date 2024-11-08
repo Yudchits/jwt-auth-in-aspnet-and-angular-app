@@ -9,7 +9,7 @@ namespace Marketplace.Logic.Common.Services
     {
         Task<Result<CarBLL>> AddAsync(CarBLL car);
         Task<Result<CarBLL>> UpdateAsync(CarBLL car);
-        Task<Result<CarBLL>> DeleteAsync(CarBLL car);
+        Task<Result<CarBLL>> DeleteAsync(int id);
         Task<IEnumerable<CarBLL>> GetAllAsync();
         Task<CarBLL> GetByIdAsync(int id);
     }

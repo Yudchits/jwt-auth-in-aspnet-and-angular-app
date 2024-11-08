@@ -54,22 +54,15 @@ namespace Marketplace.WebAPI.Controllers
         [Route("delete")]
         public async Task<IActionResult> DeleteAsync([FromBody] CarDeletePL car)
         {
-            var carById = await _carService.GetByIdAsync(car.Id);
-
-            if (carById == null)
-            {
-                return StatusCode(404, new { Message = "There is no car with id = " + car.Id });
-            }
-
-            var deleteResult = await _carService.DeleteAsync(carById);
+            var deleteResult = await _carService.DeleteAsync(car.Id);
 
             if (deleteResult.Success)
             {
-                return StatusCode(200, deleteResult?.Data.Id);
+                return StatusCode(200, new { Data = deleteResult?.Data.Id });
             }
             else
             {
-                return StatusCode(400, deleteResult.Message);
+                return StatusCode(400, new { Message = deleteResult.Message });
             }
         }
 
@@ -84,7 +77,7 @@ namespace Marketplace.WebAPI.Controllers
                 return StatusCode(204);
             }
 
-            return StatusCode(200, cars);
+            return StatusCode(200, new { Data = cars });
         }
 
         [HttpGet]
@@ -98,7 +91,7 @@ namespace Marketplace.WebAPI.Controllers
                 return StatusCode(404, new { Message = "There is no car with id = " + id });
             }
 
-            return StatusCode(200, carById);
+            return StatusCode(200, new { Data = carById });
         }
     }
 }

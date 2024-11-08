@@ -52,19 +52,24 @@ namespace Marketplace.Logic.Services
             }
         }
 
-        public async Task<Result<CarBLL>> DeleteAsync(CarBLL car)
+        public async Task<Result<CarBLL>> DeleteAsync(int id)
         {
-            var carDb = _mapper.Map<CarDb>(car);
+            var carDb = await _repository.GetByIdAsync(id);
 
-            var updateResult = await _repository.DeleteAsync(carDb);
-            if (updateResult.Success)
+            if (carDb == null)
             {
-                var carBLL = _mapper.Map<CarBLL>(updateResult.Data);
+                return Result<CarBLL>.Fail("There is no car with id = " + id);
+            }
+
+            var deleteResult = await _repository.DeleteAsync(carDb);
+            if (deleteResult.Success)
+            {
+                var carBLL = _mapper.Map<CarBLL>(deleteResult.Data);
                 return Result<CarBLL>.Ok(carBLL);
             }
             else
             {
-                return Result<CarBLL>.Fail(updateResult.Message);
+                return Result<CarBLL>.Fail(deleteResult.Message);
             }
         }
 

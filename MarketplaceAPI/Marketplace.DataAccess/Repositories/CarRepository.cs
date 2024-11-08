@@ -4,6 +4,7 @@ using Marketplace.DataAccess.Common.Repositories;
 using Marketplace.DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Marketplace.DataAccess.Repositories
