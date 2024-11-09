@@ -1,6 +1,7 @@
 ﻿using Marketplace.Logic.Common.Models;
 using Marketplace.Logic.Common.Services;
 using Marketplace.WebAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace Marketplace.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
         [Route("add")]
         public async Task<IActionResult> AddAsync([FromBody] CarBLL car)
         {
@@ -35,6 +37,7 @@ namespace Marketplace.WebAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "ADMIN")]
         [Route("update")]
         public async Task<IActionResult> UpdateAsync([FromBody] CarBLL car)
         {
@@ -51,6 +54,7 @@ namespace Marketplace.WebAPI.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "ADMIN")]
         [Route("delete")]
         public async Task<IActionResult> DeleteAsync([FromBody] CarDeletePL car)
         {
@@ -67,6 +71,7 @@ namespace Marketplace.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "USER")]
         [Route("getAll")]
         public async Task<IActionResult> GetAllAsync()
         {
@@ -81,6 +86,7 @@ namespace Marketplace.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "USER")]
         [Route("getById")]
         public async Task<IActionResult> GetByIdAsync([FromQuery] int id)
         {

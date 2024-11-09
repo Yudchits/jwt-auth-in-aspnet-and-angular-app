@@ -38,7 +38,7 @@ namespace JwtAuthentication.WebAPI
                 options.Secret = Configuration["SECRET"];
 
                 var isInt = int.TryParse(Configuration["TOKEN_EXPIRES_SECONDS"], out int tokenLiftTime);
-                options.TokenLifeTime = isInt ? tokenLiftTime : 1;
+                options.TokenLifeTime = isInt ? tokenLiftTime : 3600;
             });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -68,7 +68,7 @@ namespace JwtAuthentication.WebAPI
             app.UseRouting();
 
             app.UseCors(builder => builder
-                .WithOrigins(Configuration["AUDIENCE"])
+                .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
             );

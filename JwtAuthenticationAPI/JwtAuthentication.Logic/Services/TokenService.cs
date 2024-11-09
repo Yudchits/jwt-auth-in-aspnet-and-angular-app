@@ -21,27 +21,23 @@ namespace JwtAuthentication.Logic.Services
 
         public string GenerateToken(UserBLL user)
         {
-            var securityKey = _authOptions.GetSymmetricSecurityKey();
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-            var claims = new List<Claim>
+            var authClaims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString())
+                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, user.Id.ToString())
             };
 
             foreach (var role in user.UserRoles)
             {
-                claims.Add(new Claim("role", role.Role.Name));
+                authClaims.Add(new Claim("role", role.Role.Name));
             }
 
-            var token = new JwtSecurityToken
-            (
+            var token = new JwtSecurityToken(
                 issuer: _authOptions.Issuer,
                 audience: _authOptions.Audience,
-                claims: claims,
                 expires: DateTime.Now.AddSeconds(_authOptions.TokenLifeTime),
-                signingCredentials: credentials
+                claims: authClaims,
+                signingCredentials: new SigningCredentials(_authOptions.GetSymmetricSecurityKey(),SecurityAlgorithms.HmacSha256)
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
