@@ -1,0 +1,58 @@
+<div class="register">
+  <div class="register__container">
+    <form class="register__form">
+      <div class="register-form__header">
+        <h1 class="sign-in">Sign Up</h1>
+        <p>Already have an account? 
+          <a 
+            routerLink="register"
+            class="sign-up"
+          >
+            Sign In
+          </a>
+        </p>
+      </div>
+      <div class="register-form__inputs">
+        <div class="register-form__input">
+          <input 
+            type="text" 
+            class="form__field" 
+            placeholder="Email" 
+            id="email" 
+            required=""
+          >
+          <label 
+            for="email" 
+            class="form__label"
+          >
+            Email
+          </label>
+        </div>
+        <div class="register-form__input">
+          <input 
+            type="password" 
+            class="form__field" 
+            placeholder="Password" 
+            id="password" 
+            required=""
+          >
+          <label 
+            for="password" 
+            class="form__label"
+          >
+            Password
+          </label>
+        </div>
+      </div>
+      <div class="register-form__submit">
+        <button 
+          type="button" 
+          class="form-submit__button"
+          (click)="onSignUpClick()"
+        >
+          Sign Up
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
