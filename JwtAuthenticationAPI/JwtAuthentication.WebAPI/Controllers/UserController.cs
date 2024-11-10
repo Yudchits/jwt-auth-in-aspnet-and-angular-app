@@ -56,7 +56,7 @@ namespace JwtAuthentication.WebAPI.Controllers
 
             if (!loginResult.Success)
             {
-                return StatusCode(409, new { Message = loginResult.Message });
+                return StatusCode(401, new { Message = loginResult.Message });
             }
             else
             {
