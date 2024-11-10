@@ -15,6 +15,7 @@ export class AuthService {
 
   private apiUrl: string = `${environment.authApi}/api`;
   private loginUrl: string = '/user/login';
+  private registerUrl: string = '/user/register';
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +26,16 @@ export class AuthService {
           localStorage.setItem(AUTH_TOKEN_KEY, response.data);
           return response.data;
         }),
+      );
+  }
+
+  register(registerForm: NgForm): Observable<string> {
+    return this.http.post<Result<string>>(this.apiUrl + this.registerUrl, registerForm)
+      .pipe(
+        map((response: Result<string>) => {
+          localStorage.setItem(AUTH_TOKEN_KEY, response.data);
+          return response.data;
+        })
       );
   }
 

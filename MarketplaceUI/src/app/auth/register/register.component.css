@@ -37,6 +37,15 @@
     background-clip: text;
 }
 
+.login-form__message {
+    margin: 10px 0;
+}
+
+.login-form__error {
+    padding: 10px 4px;
+    background-color: #ff0000a8;
+}
+
 .register-form__inputs {
     margin-top: 15px;
     display: flex;
@@ -91,6 +100,11 @@
     display: block;
     transition: 0.5s;
     color: #0ec2cb;
+}
+
+.form__error {
+    color: rgb(226, 0, 0);
+    padding: 5px 0 0;
 }
 
 .register-form__submit {

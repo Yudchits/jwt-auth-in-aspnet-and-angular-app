@@ -42,7 +42,8 @@
           </label>
           <div
             *ngIf="isSubmitted" 
-            class="form__error">
+            class="form__error"
+          >
             <p *ngIf="loginForm.get('email').hasError('required')">Field is required</p>
             <p 
               *ngIf="!loginForm.get('email').hasError('required') 
@@ -68,16 +69,17 @@
             Password
           </label>
           <div
-          *ngIf="isSubmitted" 
-          class="form__error">
-          <p *ngIf="loginForm.get('password').hasError('required')">Field is required</p>
-          <p 
-            *ngIf="!loginForm.get('password').hasError('required') 
-            && loginForm.get('password').hasError('maxlength')"
+            *ngIf="isSubmitted" 
+            class="form__error"
           >
-            Field's max length is 32
-          </p>
-        </div>
+            <p *ngIf="loginForm.get('password').hasError('required')">Field is required</p>
+            <p 
+              *ngIf="!loginForm.get('password').hasError('required') 
+              && loginForm.get('password').hasError('maxlength')"
+            >
+              Field's max length is 32
+            </p>
+          </div>
         </div>
       </div>
       <div class="login-form__submit">
