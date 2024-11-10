@@ -1,16 +1,28 @@
 <div class="login">
   <div class="login__container">
-    <form class="login__form">
+    <form 
+      [formGroup]="loginForm"
+      class="login__form"
+      (submit)="onSignInClick()"
+    >
       <div class="login-form__header">
         <h1 class="sign-in">Sign In</h1>
         <p>Don't have an account? 
           <a 
-            routerLink="register"
+            routerLink="/register"
             class="sign-up"
           >
             Sign Up
           </a>
         </p>
+      </div>
+      <div class="login-form__message">
+        <div 
+          *ngIf="error" 
+          class="login-form__error"
+        >
+          {{ error }}
+        </div>
       </div>
       <div class="login-form__inputs">
         <div class="login-form__input">
@@ -20,6 +32,7 @@
             placeholder="Email" 
             id="email" 
             required=""
+            formControlName="email"
           >
           <label 
             for="email" 
@@ -27,6 +40,17 @@
           >
             Email
           </label>
+          <div
+            *ngIf="isSubmitted" 
+            class="form__error">
+            <p *ngIf="loginForm.get('email').hasError('required')">Field is required</p>
+            <p 
+              *ngIf="!loginForm.get('email').hasError('required') 
+              && loginForm.get('email').hasError('maxlength')"
+            >
+              Field's max length is 32
+            </p>
+          </div>
         </div>
         <div class="login-form__input">
           <input 
@@ -35,6 +59,7 @@
             placeholder="Password" 
             id="password" 
             required=""
+            formControlName="password"
           >
           <label 
             for="password" 
@@ -42,13 +67,23 @@
           >
             Password
           </label>
+          <div
+          *ngIf="isSubmitted" 
+          class="form__error">
+          <p *ngIf="loginForm.get('password').hasError('required')">Field is required</p>
+          <p 
+            *ngIf="!loginForm.get('password').hasError('required') 
+            && loginForm.get('password').hasError('maxlength')"
+          >
+            Field's max length is 32
+          </p>
+        </div>
         </div>
       </div>
       <div class="login-form__submit">
         <button 
-          type="button" 
+          type="submit" 
           class="form-submit__button"
-          (click)="onSignInClick()"
         >
           Sign In
         </button>

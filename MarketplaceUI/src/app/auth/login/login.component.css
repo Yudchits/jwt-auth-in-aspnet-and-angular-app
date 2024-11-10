@@ -37,8 +37,16 @@
     background-clip: text;
 }
 
+.login-form__message {
+    margin: 10px 0;
+}
+
+.login-form__error {
+    padding: 10px 4px;
+    background-color: #ff0000a8;
+}
+
 .login-form__inputs {
-    margin-top: 15px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -56,7 +64,7 @@
     border-bottom: 2px solid var(--clr-light);
     outline: 0;
     color: var(--clr-light);
-    padding: 7px 0;
+    padding: 6px 0;
     background: transparent;
     transition: border-color 0.2s;
 }
@@ -91,6 +99,11 @@
     display: block;
     transition: 0.5s;
     color: #0ec2cb;
+}
+
+.form__error {
+    color: rgb(226, 0, 0);
+    padding: 5px 0 0;
 }
 
 .login-form__submit {
