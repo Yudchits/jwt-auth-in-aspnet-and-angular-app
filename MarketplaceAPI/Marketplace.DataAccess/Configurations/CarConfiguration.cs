@@ -27,27 +27,13 @@ namespace Marketplace.DataAccess.Configurations
                 .HasMaxLength(64)
                 .IsRequired();
 
-            builder.Property(c => c.FuelType)
-                .HasMaxLength(64)
-                .IsRequired();
-
-            builder.Property(c => c.EngineCapacity)
-                .HasPrecision(3, 1)
-                .IsRequired();
-
-            builder.Property(c => c.EnginePower)
-                .IsRequired();
-
-            builder.Property(c => c.DriveSystem)
-                .HasMaxLength(64)
-                .IsRequired();
-
-            builder.Property(c => c.Transmission)
-                .HasMaxLength(64)
-                .IsRequired();
-
             builder.Property(c => c.Photo)
                 .IsRequired();
+
+            builder.HasOne(c => c.Engine)
+                .WithMany(e => e.Cars)
+                .HasForeignKey(c => c.EngineId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }
