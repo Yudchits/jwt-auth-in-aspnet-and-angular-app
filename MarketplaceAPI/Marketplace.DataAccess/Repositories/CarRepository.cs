@@ -4,7 +4,6 @@ using Marketplace.DataAccess.Common.Repositories;
 using Marketplace.DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Marketplace.DataAccess.Repositories
@@ -62,12 +61,16 @@ namespace Marketplace.DataAccess.Repositories
 
         public async Task<IEnumerable<CarDb>> GetAllAsync()
         {
-            return await _context.Cars.ToListAsync();
+            return await _context.Cars
+                .Include(c => c.Engine)
+                .ToListAsync();
         }
 
         public async Task<CarDb> GetByIdAsync(int id)
         {
-            return await _context.Cars.FindAsync(id);
+            return await _context.Cars
+                .Include(c => c.Engine)
+                .FirstOrDefaultAsync(c => c.Id == id);
         }
 
         private async Task<bool> SaveChangesAsync()
