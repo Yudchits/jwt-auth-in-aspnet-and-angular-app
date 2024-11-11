@@ -1,0 +1,99 @@
+.car {
+    height: 100vh;
+    background-color: var(--clr-dark);
+    overflow-y: hidden;
+}
+
+.car__container {
+    height: 100vh;
+    padding: 20px 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.v-button {
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid #ffffff3a;
+    opacity: 0.7;
+    z-index: 1;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.v-button:hover {
+    opacity: 1;
+}
+
+.next-card {
+    right: 10px;
+    transform: rotate(90deg);
+}
+
+.previous-card {
+    left: 10px;
+    transform: rotate(-90deg);
+}
+
+.card__title {
+    text-align: center;
+    text-shadow: 1px 1px #000;
+    font-family: "Dancing Script", cursive;
+    font-weight: 700;
+    font-size: 2.7em;
+    letter-spacing: 1.5px;
+}
+
+.card__image {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.card-image__image {
+    box-shadow: rgba(0, 0, 0, 0.511) 0px 3px 8px;
+}
+
+.card__body {
+    margin-top: 15px;
+}
+
+.card-body__title {
+    font-weight: 500;
+    font-family: "Rubik", sans-serif;
+    text-align: center;
+    font-size: 2.1em;
+    text-shadow: 1px 1px #000;
+}
+
+.card-body-title__sub {
+    font-weight: 300;
+    margin-top: 3px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.card-body__characteristics {
+    margin-top: 40px;
+    font-size: 1.5em;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.card-body-characteristic__sub {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-top: 3px;
+    margin-left: 8px;
+    text-wrap: nowrap;
+}

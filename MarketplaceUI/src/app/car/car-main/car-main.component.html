@@ -1,3 +1,55 @@
-<p>
-  car-main works!
-</p>
+<div class="car">
+  <div class="car__container">
+    <div
+      (click)="onNextCardClick()" 
+      class="previous-card v-button"
+    ></div>
+    <div
+      (click)="onPreviousCardClick()" 
+      class="next-card v-button"
+    ></div>
+    <div
+      *ngIf="cars.length > 0"
+      #carCards
+      class="car__card"
+    >
+      <h1
+        #cardTitle 
+        class="card__title"
+      >
+        {{ cars[currentIndex].brand }}
+      </h1>
+      <div class="card__image">
+        <img 
+          #cardImage
+          [src]="cars[currentIndex].photo" 
+          width="150px" 
+          alt=""
+          class="card-image__image"
+        >
+      </div>
+      <div
+        #cardBody 
+        class="card__body"
+      >
+        <h3 class="card-body__title">{{ cars[currentIndex].model }}
+          <p class="card-body-title__sub">{{ cars[currentIndex].generation }} generation</p>
+        </h3>
+        <div class="card-body__characteristics">
+          <div class="card-body__characteristic">
+            <h3>
+              {{ cars[currentIndex].engine.capacity | double }}
+              <p class="card-body-characteristic__sub">Engine capacity</p>
+            </h3>
+          </div>
+          <div class="card-body__characteristic">
+            <h3>
+              {{ cars[currentIndex].engine.power }}
+              <p class="card-body-characteristic__sub">Engine power</p>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

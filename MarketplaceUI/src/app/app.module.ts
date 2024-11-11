@@ -11,6 +11,7 @@ import { CarMainComponent } from './car/car-main/car-main.component';
 import { JwtInterceptor } from './auth/common/interceptors/jwt.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorInterceptor } from './auth/common/interceptors/error.interceptor';
+import { DoublePipe } from './car/common/pipes/double.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ErrorInterceptor } from './auth/common/interceptors/error.interceptor';
     LoginComponent,
     RegisterComponent,
     CarModuleComponent,
-    CarMainComponent
+    CarMainComponent,
+    DoublePipe
   ],
   imports: [
     BrowserModule,
